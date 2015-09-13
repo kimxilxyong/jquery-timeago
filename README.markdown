@@ -1,3 +1,12 @@
+This a fork of rmm5t/jquery-timeago with the porpose of improving the handling of intervals. The reason why i have forked it is that i have a huge problem with clearInterval. If you call $("element").timeago() more than once it is not possible to remove the event unless you keep track of all the interval event Id's yourself! Which should not be neccessary, thats what a plugin should be for.
+
+Further an interval event is triggered for each timeago element, regardless of the timespan to the next text change. My goal is to have one (and only one) event, that triggers when it is needed, not every x milliseconds for every element.
+
+This is work in progress, do not use it now. Input is welcome.
+
+The following is the orginal from the wonderfull timeago plugin by  Ryan McGeary (@rmm5t) 
+
+
 # timeago: a jQuery plugin
 
 Timeago is a jQuery plugin that makes it easy to support automatically updating
