@@ -16,21 +16,6 @@
 
 (function (factory) {
 
-  // import the chronos task scheduler
-  /*var chronosUrl = "/js/jquery-timeago/vendor/chronos/chronos.js";
-  //$.getScript(chronosUrl)
-  $.ajax({url: chronosUrl, dataType: 'script', cache: true})
-  .done(function( script, textStatus ) {
-    // set the chronos check interval to 5 seconds instead of 50 milliseconds
-    // to keep the cpu load as low as possible - it runs with 50 millis with
-    // no hickups, but its just not neccessary for timeago
-    chronos.minimumInterval(5000);
-   })
-   .fail(function( jqxhr, settings, exception ) {
-      alert("Timeago plugin: failed to load " + chronosUrl + ", " + exception + ", code: " + jqxhr.status);
-   });
-*/
-
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['jquery'], factory);
@@ -165,11 +150,13 @@
       if ($s.refreshMillis > 0) {
         // Clear the old interval before creating a new one
         // The old interval would otherwise be lost and keeps running forever
-        if (this._timeagoInterval) {
+        if (this._timeagoInterval != null) {
           chronos.clearInterval(this._timeagoInterval);
+          console.log("init chronos.clearInterval(" + this._timeagoInterval + ")")
           this._timeagoInterval = null;
         };
         this._timeagoInterval = chronos.setInterval(refresh_el, $s.refreshMillis);
+        console.log("chronos.setInterval(" + this._timeagoInterval + ")")
         //this._timeagoInterval = setInterval(refresh_el, $s.refreshMillis);
       }
     },
@@ -184,8 +171,9 @@
       refresh.apply(this);
     },
     dispose: function () {
-      if (this._timeagoInterval) {
+      if (this._timeagoInterval != null) {
         chronos.clearInterval(this._timeagoInterval);
+        console.log("chronos.clearInterval(" + this._timeagoInterval + ")")
         this._timeagoInterval = null;
       };
     }
