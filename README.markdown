@@ -1,3 +1,5 @@
+# chronos-timeago: a jQuery plugin for timeago date strings using the chronos task scheduler
+
 This is a fork of [rmm5t/jquery-timeago](https://github.com/rmm5t/jquery-timeago) with the porpose of improving the handling of intervals. The reason why i have forked it is that i have a huge problem with clearInterval. If you call $("element").timeago() more than once it is not possible to remove the event unless you keep track of all the interval event Id's yourself! Which should not be neccessary, because thats what a plugin should be for.
 This multiple calling of $("element").timeago() is fixed - an existing event is removed before creating a new one.
 
