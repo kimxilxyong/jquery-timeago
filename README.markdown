@@ -1,6 +1,6 @@
-This a fork of rmm5t/jquery-timeago with the porpose of improving the handling of intervals. The reason why i have forked it is that i have a huge problem with clearInterval. If you call $("element").timeago() more than once it is not possible to remove the event unless you keep track of all the interval event Id's yourself! Which should not be neccessary, thats what a plugin should be for.
+This is a fork of [https://github.com/rmm5t/jquery-timeago] with the porpose of improving the handling of intervals. The reason why i have forked it is that i have a huge problem with clearInterval. If you call $("element").timeago() more than once it is not possible to remove the event unless you keep track of all the interval event Id's yourself! Which should not be neccessary, because thats what a plugin should be for.
 
-To avoid JavaTimer congestion i have included the wonderfull chronos lib from http://fitzgeraldnick.com/weblog/40/
+To avoid [JavaTimer congestion][http://fitzgeraldnick.com/weblog/40/] i have included the wonderfull chronos lib from https://github.com/fitzgen/chronos
 Check it out - lots of brain food.
 
 So this is now a combination of timeago and chronos, with the ability to remove events securely and fine tune your check intervalls. Chronos makes sure there is no lag on the UI when running checks. 
