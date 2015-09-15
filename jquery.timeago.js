@@ -279,7 +279,6 @@
 // CHRONOS
 window["chronos"] = (function () {
 
-
     // ## Variables and Utilities
 
     // Counter which keeps incrementing to give each task a unique id.
@@ -293,7 +292,7 @@ window["chronos"] = (function () {
 
     // The interval at which we check for tasks to run. It follows that the
     // smallest timeout interval you can give a task is this value.
-    var INTERVAL = 50;
+    var INTERVAL = 50;  // milliseconds
 
     // Return a function which calls `fn` as if `args` had been passed in as
     // arguments directly. Don't need to worry about return values because this
@@ -330,7 +329,6 @@ window["chronos"] = (function () {
             ? n - diff
             : n + INTERVAL-diff;
     }
-
 
     // ## Tasks
     //
@@ -374,13 +372,11 @@ window["chronos"] = (function () {
         return task.next = task.timeout;
     }
 
-
     // ## Task Runner
     //
     // The task runner is the main function which runs the tasks whose timers
     // have counted down, resets the timers if necessary, and deletes tasks
     // which only run once and have already been run.
-
     function taskRunner () {
         var i = 0,
             tasksToRun = keys(tasks),
@@ -446,14 +442,12 @@ window["chronos"] = (function () {
             && delete tasks[id];
     }
 
-
     // ## Public API
     //
     // The arguments and return values of the functions exposed in the public
     // API exactly match that of their respective timer functions defined on
     // `window` by the HTML 5 specification. The only exception is
     // `minimumInterval`, which is specific to Chronos.
-
     return {
 
         "setTimeout": function (fn, ms /*, args... */) {
@@ -481,9 +475,7 @@ window["chronos"] = (function () {
                 ? INTERVAL = newInterval
                 : INTERVAL;
         }
-
     };
-
 }());
 
 // set the chronos check interval to 5 seconds instead of 50 milliseconds
