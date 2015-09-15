@@ -1,8 +1,40 @@
 This a fork of rmm5t/jquery-timeago with the porpose of improving the handling of intervals. The reason why i have forked it is that i have a huge problem with clearInterval. If you call $("element").timeago() more than once it is not possible to remove the event unless you keep track of all the interval event Id's yourself! Which should not be neccessary, thats what a plugin should be for.
 
-Further an interval event is triggered for each timeago element, regardless of the timespan to the next text change. My goal is to have one (and only one) event, that triggers when it is needed, not every x milliseconds for every element.
+To avoid JavaTimer congestion i have included the wonderfull chronos lib from http://fitzgeraldnick.com/weblog/40/
+Check it out - lots of brain food.
 
-This is work in progress, do not use it now. Input is welcome.
+So this is now a combination of timeago and chronos, with the ability to remove events securely and fine tune your check intervalls. Chronos makes sure there is no lag on the UI when running checks. 
+
+Examples for overriding settings (in this case remove the "about" form the diplayed text:
+'''
+    
+    // Timeago settings
+    $.timeago.settings.strings.minute = "1 minute";
+    $.timeago.settings.strings.hour = "a hour";
+    $.timeago.settings.strings.hours = "%d hours";
+    $.timeago.settings.strings.month = "a month";
+    $.timeago.settings.strings.year = "a year";
+    $.timeago.settings.allowFuture = true;
+
+    // set the refresh to 30 seconds instead of 60
+    // problem was that the timeago jumped from "less than a minute"
+    // to "2 minutes" because of the 60 refresh
+    $.timeago.settings.refreshMillis = 30000;
+
+    // set the chronos check interval to 5 seconds instead of 50 milliseconds
+    // to keep the cpu load as low as possible - it runs with 50 millis with
+    // no hickups, but its just not neccessary for timeago
+    chronos.minimumInterval(5000);
+    
+    // No existing code should be broken, you can still use:'
+    // Add a timeago event to elem
+    $(elem).timeago('init');
+    // Remove the timer from element is now working regardless of how many inits have been sent
+    $(elem).timeago('dispose');
+''''   
+    
+This code is a working beta now, it will not burn down your house if you try it.
+
 
 The following is the orginal from the wonderfull timeago plugin by  Ryan McGeary (@rmm5t) 
 
