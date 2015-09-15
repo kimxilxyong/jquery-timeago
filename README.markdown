@@ -13,9 +13,8 @@ Check it out - lots of brain food.
 
 So this is now a combination of timeago and chronos, with the ability to remove events securely and fine tune your check intervalls. Chronos makes sure there is no lag on the UI when running checks. 
 
-Examples for overriding settings (in this case remove the "about" form the diplayed text:
-'''
-    
+Examples for overriding settings (in this case remove the "about" from the displayed text:
+
     // Timeago settings
     $.timeago.settings.strings.minute = "1 minute";
     $.timeago.settings.strings.hour = "a hour";
@@ -39,7 +38,6 @@ Examples for overriding settings (in this case remove the "about" form the dipla
     $(elem).timeago('init');
     // Remove the timer from element is now working regardless of how many inits have been sent
     $(elem).timeago('dispose');
-''''   
     
 This code is a working beta now, it will not burn down your house if you try it.
 
