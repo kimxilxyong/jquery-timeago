@@ -2,9 +2,11 @@ This is a fork of [rmm5t/jquery-timeago](https://github.com/rmm5t/jquery-timeago
 This multiple calling of $("element").timeago() is fixed - an existing event is removed before creating a new one.
 
     // Create a new timeago event on element:
-    // $("element").timeago("init"); or default  $("element").timeago(); 
+    $("element").timeago("init"); 
+    // or default  
+    $("element").timeago(); 
     // Delete a timeago event on element
-    // $("element").timeago("dispose"); 
+    $("element").timeago("dispose"); 
 
 To avoid [JavaTimer congestion](http://fitzgeraldnick.com/weblog/40/) i have included the wonderfull chronos lib from [fitzgen/chronos](https://github.com/fitzgen/chronos)
 Check it out - lots of brain food.
